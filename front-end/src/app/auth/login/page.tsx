@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
 import Image from 'next/image';
-import Button from '../_components/Button';
-import Input from '../_components/input';
+import Button from '../../_components/Button';
+import Input from '../../_components/input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, LoginUserFormData } from '../schemas/loginSchema';
+import { loginSchema, LoginUserFormData } from '../../schemas/FormLoginSchema';
 
 export default function Login() {
     const form = useForm({
         resolver: zodResolver(loginSchema),
     });
 
-    function onSubmit(data:LoginUserFormData){
-        console.log(data.name, data.password);
+    async function onSubmit(formData: LoginUserFormData) {
+        console.log(formData.name, formData.password);
     }
     return (
         <div className="flex flex-col gap-32 justify-center items-center">
