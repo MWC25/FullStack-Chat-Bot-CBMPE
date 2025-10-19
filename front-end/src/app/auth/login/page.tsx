@@ -5,16 +5,26 @@ import Button from '../../_components/Button';
 import Input from '../../_components/input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, LoginUserFormData } from '../../schemas/FormLoginSchema';
+import { FormDataLogin, loginSchema } from '../../schemas/FormLoginSchema';
+import { loginUser } from '@/app/services/LoginUser';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
+    const router = useRouter()
+
     const form = useForm({
         resolver: zodResolver(loginSchema),
     });
 
-    async function onSubmit(formData: LoginUserFormData) {
+    async function onSubmit(formData: FormDataLogin) {
         console.log(formData.name, formData.password);
+        const login = await loginUser(formData.name, formData.password)
+        
+        if(login.ok){
+            router.push('/dashboard')
+        }
     }
+
     return (
         <div className="flex flex-col gap-32 justify-center items-center">
             <Image
