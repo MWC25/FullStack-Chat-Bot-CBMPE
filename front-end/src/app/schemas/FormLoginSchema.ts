@@ -10,7 +10,7 @@ export const loginSchema = z.object({
         ),
     password: z
         .string()
-        .min(6, 'A senha deve ter pelo menos 6 caracteres')
+        .min(6, 'A senhas são composta por pelo menos 6 caracteres')
 });
 
 export type FormDataLogin = z.infer<typeof loginSchema>;

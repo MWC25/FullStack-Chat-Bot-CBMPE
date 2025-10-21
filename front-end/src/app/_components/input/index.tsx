@@ -2,13 +2,12 @@
 import React, { useState } from 'react';
 import { PropsInput } from './PropsInput';
 
-
 const Input = React.forwardRef<HTMLInputElement, PropsInput>(
-    ({ label, type, placeholder, ...rest}, ref) => {
+    ({ label, type, placeholder, error, ...rest }, ref) => {
         const [isFocused, setIsFocused] = useState(false);
 
         return (
-            <div className="relative w-fit">
+            <div className="relative w-fit flex flex-col gap-8 my-4">
                 <input
                     ref={ref}
                     type={type}
@@ -27,10 +26,15 @@ const Input = React.forwardRef<HTMLInputElement, PropsInput>(
             }`}>
                     {label}
                 </label>
+                {error ? (
+                    <p className="font-body-2 text-red-500">{error}</p>
+                ) : (
+                    <p className="font-body-2 text-transparent">placeholder</p>
+                )}
             </div>
         );
     }
 );
 
 Input.displayName = 'Input';
-export default Input
+export default Input;

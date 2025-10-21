@@ -1,9 +1,15 @@
+import axios from 'axios';
 import api, { setAuthToken } from '../../../lib/axiosClient';
 
-export async function loginUser( username: string, password:string, expireInMin
-    :number = 1) {
-        const instant = new Date();
-        const expireDate = new Date(instant.getTime() + expireInMin * 60 * 1000).toISOString();
+export async function loginUser(
+    username: string,
+    password: string,
+    expireInMin: number = 1
+) {
+    const instant = new Date();
+    const expireDate = new Date(
+        instant.getTime() + expireInMin * 60 * 1000
+    ).toISOString();
     try {
         const res = await api.post('/auth/login', {
             username,
@@ -21,18 +27,20 @@ export async function loginUser( username: string, password:string, expireInMin
             setAuthToken(data.accessToken);
         }
 
-        return { ok: true, data, expireDate};
+        return { ok: true, data, expireDate };
     } catch (error: any) {
 
         const data = {
             errorStatusCode: error.status,
             errorCode: error.code,
             errorMessage: error.message,
-            response:{
-                message: error.response.data.message
-            }
-        } 
-        return {ok: false, data}
+            response: {
+                message: error.response.data.message,
+            },
+        };
 
+        console.log(data)
+
+        return { ok: false, data };
     }
 }
