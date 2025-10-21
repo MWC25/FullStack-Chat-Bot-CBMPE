@@ -5,8 +5,8 @@ import Button from '../../_components/Button';
 import Input from '../../_components/input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormDataLogin, loginSchema } from '../../schemas/FormLoginSchema';
-import { loginUser } from '@/app/services/LoginUser';
+import { FormDataLogin, loginSchema } from '../../_schemas/FormLoginSchema';
+import { loginUser } from '@/app/_services/LoginUser';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
