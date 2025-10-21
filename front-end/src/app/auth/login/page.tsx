@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Button from '../../_components/Button';
-import Input from '../../_components/input';
+import Input from '../../_components/Input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormDataLogin, loginSchema } from '../../_schemas/FormLoginSchema';
@@ -34,7 +34,7 @@ export default function Login() {
         if (!login.ok) { setResData(login.data) }
         
         if(login.ok){
-            router.push('/dashboard')
+            router.push('/dashboard/chats')
         }
     }
 
@@ -46,6 +46,7 @@ export default function Login() {
                 width={320}
                 height={320}
                 alt="Brasão do corpo de bombeiro"
+                priority
             />
             <h2 className="title-2">Realize o login para acessar o sistema</h2>
             <form
