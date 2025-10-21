@@ -24,6 +24,10 @@ h6 {
     font-family: $font-title;
 }
 
+.bold{
+    font-weight: 800 !important;
+}
+
 .title-1{
     overflow-wrap: normal;
     font-size: size($size-base-desktop, $text-ratio-desktop, 5);

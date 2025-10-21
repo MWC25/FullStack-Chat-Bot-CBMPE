@@ -7,6 +7,10 @@ h6 {
   font-family: var(--font-roboto);
 }
 
+.bold {
+  font-weight: 800 !important;
+}
+
 .title-1 {
   overflow-wrap: normal;
   font-size: 43px;
