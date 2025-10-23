@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Sidebar() {
     return (
-        <div className="p-32 flex flex-col gap-32 bg-light shadow-xl">
+        <div className="p-32 flex flex-col gap-32 bg-light dark:bg-dark-secundary shadow-lg dark:shadow-black">
             <Image
                 className="w-100"
                 src="/brasao-cbmpe.png"

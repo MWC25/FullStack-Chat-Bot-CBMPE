@@ -9,6 +9,9 @@ import { FormDataLogin, loginSchema } from '../../_schemas/FormLoginSchema';
 import { loginUser } from '@/app/_services/LoginUser';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useTheme } from '@/app/_context/ThemeContext';
+import { Moon, Sun } from 'lucide-react';
+import ThemeButton from '@/app/_components/ThemeButton';
 
 export default function Login() {
     const router = useRouter()
@@ -22,6 +25,7 @@ export default function Login() {
             }
         }
     );
+    const {theme, toggleTheme} = useTheme()
 
     const form = useForm({
         resolver: zodResolver(loginSchema),
@@ -48,7 +52,9 @@ export default function Login() {
                 alt="Brasão do corpo de bombeiro"
                 priority
             />
-            <h2 className="title-2">Realize o login para acessar o sistema</h2>
+            <h2 className="title-2 text-dark-secundary dark:text-light-secundary">
+                Realize o login para acessar o sistema
+            </h2>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="flex flex-col gap-16 items-center justify-center w-320"
@@ -73,12 +79,18 @@ export default function Login() {
                             | undefined
                     }
                 />
-                {resData ? (<p className='title-4 text-red-500'>{resData.response.message}</p>) :
-                (<p className='title-4 text-transparent'>placeholder</p>)}
+                {resData ? (
+                    <p className="title-4 text-red-500">
+                        {resData.response.message}
+                    </p>
+                ) : (
+                    <p className="title-4 text-transparent">placeholder</p>
+                )}
                 <Button className="bg-primary hover:bg-hover" full>
                     Acessar
                 </Button>
             </form>
+            <ThemeButton/>
         </div>
     );
 }

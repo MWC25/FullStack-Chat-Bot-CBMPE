@@ -31,3 +31,5 @@ body {
     --color-dark-secundary: #3F3F3F;
     --color-link: #DC3B1D;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

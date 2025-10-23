@@ -21,7 +21,7 @@ export default function MenuItems({
         <li>
             <Link
                 className={`flex flex-row ${
-                    pathname === path ? 'text-primary' : 'text-dark-secundary'
+                    pathname === path ? 'text-primary' : 'text-dark-secundary dark:text-light-secundary'
                 } uppercase justify-between items-center hover:text-hover max-w-120 gap-12`}
                 href={path}>
                 {rightIcon}

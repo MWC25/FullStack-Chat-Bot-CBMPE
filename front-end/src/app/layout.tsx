@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import './global.css';
+import ThemeProvider from "./_context/ThemeContext";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -20,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${roboto.variable} antialiased flex flex-col justify-center items-center bg-light`}
+        className={`${roboto.variable} antialiased flex flex-col justify-center items-center bg-light dark:bg-dark`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
