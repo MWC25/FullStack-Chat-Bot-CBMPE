@@ -11,6 +11,8 @@ $text-ratio-desktop: 1.25;
 $font-title: var(--font-roboto);
 $font-body: var(--font-roboto);
 
+$header-height: 108;
+
 @function size($base, $ratio, $step, $unit: px) {
     @return math.round($base * math.pow($ratio, $step)) + $unit;
 }
@@ -71,4 +73,9 @@ h6 {
 
 .tooltip {
     font-size: 10px;
+}
+
+// tamanho da tela subitraindo o header
+.screen{
+    height: calc(100dvh - #{$header-height}px);
 }

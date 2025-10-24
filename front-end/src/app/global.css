@@ -5,7 +5,7 @@
 /* Link do video de snippets: https://youtu.be/3NHEYUdBguY?si=0wovfMhbFNsR57zA&t=302 */
 /*--------------CSS RESET--------------*/
 html {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 :root {

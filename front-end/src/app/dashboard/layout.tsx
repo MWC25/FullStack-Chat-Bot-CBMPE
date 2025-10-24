@@ -5,6 +5,7 @@ import Sidebar from '../_components/Sidebar';
 import Link from 'next/link';
 import { CircleUserRound } from 'lucide-react';
 import ThemeButton from '../_components/ThemeButton';
+import Image from 'next/image';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -21,14 +22,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const translatedRoute = routesTranslate[ lastSegment as keyof typeof routesTranslate] ?? lastSegment;
 
     return (
-        <div className="flex flex-row w-full h-dvh">
-            <Sidebar />
-            <div className="w-full">
-                <header className="flex justify-between px-32 py-32 w-full shadow dark:shadow-neutral-900 ml-2">
+        <div className="flex flex-col w-full h-dvh overflow-y-hidden">
+            <header className="flex bg-dark-secundary justify-between items-center px-32 py-24 w-full shadow dark:shadow-neutral-900 gap-72">
+                <Image
+                    className="w-60"
+                    src="/brasao-cbmpe.png"
+                    width={320}
+                    height={320}
+                    alt="Brasão do corpo de bombeiro"
+                    priority
+                />
+                <div className="flex items-center justify-between w-full">
                     <h2 className="bold title-2 uppercase text-dark-secundary dark:text-light-secundary">
                         {translatedRoute}
                     </h2>
-                    <div className='flex items-center gap-10'>
+                    <div className="flex items-center gap-16">
                         <Link
                             className={`${
                                 pathname === '/dashboard/settings/profile'
@@ -39,10 +47,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             <CircleUserRound size={28} />
                             Perfil
                         </Link>
-                        <ThemeButton/>
+                        <ThemeButton />
                     </div>
-                </header>
-                {children}
+                </div>
+            </header>
+            <div className="w-full h-fit flex">
+                <Sidebar />
+                <section>{children}</section>
             </div>
         </div>
     );
