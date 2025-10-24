@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${roboto.variable} antialiased flex flex-col justify-center items-center bg-light dark:bg-dark`}
+        className={`${roboto.variable} antialiased flex flex-col justify-center items-center bg-light-secundary dark:bg-dark`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

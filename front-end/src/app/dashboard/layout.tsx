@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
     return (
         <div className="flex flex-col w-full h-dvh overflow-y-hidden">
-            <header className="flex bg-dark-secundary justify-between items-center px-32 py-24 w-full shadow dark:shadow-neutral-900 gap-72">
+            <header className="flex bg-light dark:bg-dark-secundary justify-between items-center px-32 py-24 w-full shadow dark:shadow-neutral-900 gap-72">
                 <Image
                     className="w-60"
                     src="/brasao-cbmpe.png"
@@ -53,7 +53,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </header>
             <div className="w-full h-fit flex">
                 <Sidebar />
-                <section>{children}</section>
+                <section className='bg-light m-32 shadow-md shadow-neutral-500 rounded-2xl w-full p-32'>{children}</section>
             </div>
         </div>
     );
