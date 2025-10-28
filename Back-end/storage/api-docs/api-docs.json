@@ -303,12 +303,283 @@
                     }
                 }
             }
+        },
+        "/api/user/getusers": {
+            "get": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Lista usuários com paginação e filtros",
+                "description": "Retorna uma lista paginada de usuários. Permite busca por nome ou matrícula e filtro por status ativo.",
+                "operationId": "9a71cfab2bf6e631ded1ddfe52495e41",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Texto para busca por nome ou matrícula",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "is_active",
+                        "in": "query",
+                        "description": "Filtra usuários ativos/inativos (true/false)",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de usuários retornada com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao buscar usuários"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/user/createuser": {
+            "post": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Cria um novo usuário",
+                "description": "Cria um novo registro de usuário com nome, matrícula e senha.",
+                "operationId": "180e49e51cf820fca0d9f6920c5d5955",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "registration",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "João da Silva"
+                                    },
+                                    "registration": {
+                                        "type": "string",
+                                        "example": "2025001"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "example": "user"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao criar usuário"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/user/finduser/{id}": {
+            "get": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Busca um usuário específico",
+                "description": "Retorna os dados de um usuário pelo ID.",
+                "operationId": "fd2710ac3af6bb24bfb16d7b5493c0d3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário encontrado"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/user/edituser/{id}": {
+            "put": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Edita um usuário existente",
+                "description": "Atualiza dados de um usuário (nome, matrícula, senha, status).",
+                "operationId": "b919433a9dbbb9dafbd7152c2d98141e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Maria Souza"
+                                    },
+                                    "registration": {
+                                        "type": "string",
+                                        "example": "2025002"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "novaSenha123"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "example": "admin"
+                                    },
+                                    "is_active": {
+                                        "type": "boolean",
+                                        "example": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário atualizado com sucesso"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/user/toggleactiveuser/{id}": {
+            "patch": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Ativa ou desativa um usuário",
+                "description": "Alterna o campo is_active de um usuário.",
+                "operationId": "f7c2ae1745694cb59183e1825b6881e9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Status do usuário alterado com sucesso"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/user/deleteuser/{id}": {
+            "delete": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Exclui um usuário",
+                "description": "Remove permanentemente um usuário do sistema.",
+                "operationId": "6cb638503f592ef934b05cde76b33c97",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário excluído com sucesso"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
         }
     },
     "tags": [
         {
             "name": "Business",
             "description": "Business"
+        },
+        {
+            "name": "Usuários",
+            "description": "Usuários"
         }
     ]
 }
