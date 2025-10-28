@@ -12,13 +12,13 @@ Route::get('/user', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
-Route::prefix("business")->group(function () {
+Route:: middleware(['auth:sanctum'])->prefix("business")->group(function () {
 Route::get('/getbusiness', [BusinessController::class, 'getBusiness']);
 Route::post('/createbusiness', [BusinessController::class, 'createBusiness']);
 Route::put('/updatebusiness/{id}', [BusinessController::class, 'updateBusiness']);
 Route::delete('/deletebusiness/{id}', [BusinessController::class, 'deleteBusiness']);
 });
-Route::prefix("user")->group(function () {
+Route::middleware(['auth:sanctum'])->prefix("user")->group(function () {
     Route::get('/getusers', [UserController::class, 'getUsers']);
     Route::post('/createuser', [UserController::class, 'createUser']);
     Route::get('/finduser/{user}', [UserController::class, 'findUser']);
