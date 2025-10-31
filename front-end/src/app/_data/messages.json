@@ -1,0 +1,133 @@
+{
+    "apiInfo": {
+        "version": "1.2.0",
+        "lastFetch": "2025-10-24T10:13:45-03:00"
+    },
+    "data": [
+        {
+            "id": "wh-8a9f2-c1",
+            "channel": "WhatsApp",
+            "contactInfo": {
+                "phoneNumber": "+55 81 9-9999-9999",
+                "name": null
+            },
+            "timestamp": "2025-09-30T20:20:00",
+            "status": "pending_human_transfer",
+            "unread": true,
+            "topic": "Dúvida sobre AVCB",
+            "conversationSummary": "O usuário entrou em contato com o chatbot solicitando informações sobre o AVCB do Corpo de Bombeiros, questionando sobre validade e documentos necessários. O chatbot explicou de forma geral que o AVCB é obrigatório para o funcionamento de edificações, que a validade pode variar entre um e cinco anos e que normalmente são exigidos documentos como projeto técnico e planta do imóvel. Em seguida, o usuário pediu orientações mais específicas sobre seu caso, e o chatbot informou que, para esse tipo de atendimento, seria necessário falar com um atendente humano. Diante disso, o usuário solicitou ser redirecionado, e o chatbot confirmou que faria o encaminhamento para que um atendente desse continuidade à conversa.",
+            "lastMessage": {
+                "sender": "chatbot",
+                "text": "Entendido. Estou fazendo o encaminhamento para que um de nossos atendentes dê continuidade à sua conversa."
+            }
+        },
+        {
+            "id": "wh-9c2d1-b5",
+            "channel": "WhatsApp",
+            "contactInfo": {
+                "phoneNumber": "+55 48 9-8888-1234",
+                "name": "Carlos Mendes"
+            },
+            "timestamp": "2025-10-24T10:10:05",
+            "status": "pending_chatbot",
+            "unread": true,
+            "topic": "Erro no upload de planta",
+            "conversationSummary": "Usuário informa que está tentando enviar o PDF da planta do imóvel, mas o sistema apresenta 'Erro 503'. O chatbot solicitou que o usuário tentasse novamente e verificasse o tamanho do arquivo.",
+            "lastMessage": {
+                "sender": "user",
+                "text": "Já tentei 3x e nada. O arquivo tem 4MB. Podem me ajudar?"
+            }
+        },
+        {
+            "id": "wh-5e8a2-f7",
+            "channel": "WhatsApp",
+            "contactInfo": {
+                "phoneNumber": "+55 21 9-9123-4567",
+                "name": "Síndico Condomínio Topázio"
+            },
+            "timestamp": "2025-10-24T09:15:00",
+            "status": "pending_agent_response",
+            "unread": false,
+            "topic": "Renovação AVCB - Múltiplos blocos",
+            "conversationSummary": "Síndico de um condomínio com 4 blocos questiona se o processo de renovação é unificado ou por bloco. O chatbot transferiu para um atendente (Bruno) que está verificando a documentação anterior.",
+            "lastMessage": {
+                "sender": "agent",
+                "text": "Bom dia, Sr. Ricardo. Entendido. Só um momento, por favor, estou consultando o histórico do seu condomínio."
+            }
+        },
+        {
+            "id": "wb-3d4b6-c9",
+            "channel": "Webchat",
+            "contactInfo": {
+                "ipAddress": "189.22.1.45",
+                "name": "Visitante"
+            },
+            "timestamp": "2025-10-23T17:45:12",
+            "status": "resolved",
+            "unread": false,
+            "topic": "Horário de atendimento",
+            "conversationSummary": "Usuário perguntou o horário de atendimento presencial. O chatbot informou que o atendimento é de segunda a sexta, das 9h às 17h, e que é necessário agendamento prévio pelo site.",
+            "lastMessage": {
+                "sender": "user",
+                "text": "ok, obrigado"
+            }
+        },
+        {
+            "id": "em-1f4a9-e2",
+            "channel": "Email",
+            "contactInfo": {
+                "email": "financeiro@construtorasol.com.br",
+                "name": "Beatriz (Financeiro Sol)"
+            },
+            "timestamp": "2025-10-23T14:30:15",
+            "status": "resolved",
+            "unread": false,
+            "topic": "Confirmação de Pagamento de Taxa",
+            "conversationSummary": "O setor financeiro da Construtora Sol enviou um comprovante de PIX e solicitou confirmação do recebimento da taxa de vistoria. O chatbot não pôde confirmar, mas um agente (Ana) verificou e confirmou o recebimento no sistema.",
+            "lastMessage": {
+                "sender": "agent",
+                "text": "Pagamento confirmado, Sra. Beatriz. O processo segue para a próxima etapa. Obrigado."
+            }
+        },
+        {
+            "id": "wh-7b1e9-a4",
+            "channel": "WhatsApp",
+            "contactInfo": {
+                "phoneNumber": "+55 11 9-7777-6666",
+                "name": "Maria Clara"
+            },
+            "timestamp": "2025-09-29T19:54:30",
+            "status": "resolved",
+            "unread": false,
+            "topic": "Segunda via de documento",
+            "conversationSummary": "A usuária solicitou a segunda via da certidão de vistoria. O chatbot validou o CPF e o endereço do imóvel, encontrou o documento no sistema e o enviou em PDF.",
+            "lastMessage": {
+                "sender": "user",
+                "text": "Consegui baixar! Muito obrigada."
+            }
+        },
+        {
+            "id": "wh-0a5c1-d3",
+            "channel": "WhatsApp",
+            "contactInfo": {
+                "phoneNumber": "+55 71 9-8765-4321",
+                "name": "Advocacia Souza"
+            },
+            "timestamp": "2025-09-28T11:02:40",
+            "status": "resolved",
+            "unread": false,
+            "topic": "Consulta de Legislação",
+            "conversationSummary": "Usuário (escritório de advocacia) solicitou o número da Instrução Normativa mais recente sobre saídas de emergência. O chatbot identificou a IN correta (IN-032/2024) e forneceu o link para o Diário Oficial.",
+            "lastMessage": {
+                "sender": "chatbot",
+                "text": "A Instrução Normativa mais recente é a IN-032/2024. Você pode consultá-la na íntegra neste link: [link]."
+            }
+        }
+    ],
+    "meta": {
+        "totalItems": 7,
+        "pendingItems": 3,
+        "page": 1,
+        "totalPages": 1
+    }
+}
