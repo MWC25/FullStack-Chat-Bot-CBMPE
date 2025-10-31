@@ -3,7 +3,7 @@ import { Ellipsis, MessageSquareText, Settings } from 'lucide-react';
 
 export default function Sidebar() {
     return (
-        <div className="p-32 screen flex flex-col gap-32 bg-light dark:bg-dark-secundary shadow-lg dark:shadow-black mt-1">
+        <div className="p-32 screen flex flex-col gap-32 bg-light dark:bg-dark-secundary shadow-xl dark:shadow-neutral-900 mt-1">
             <nav className="h-834">
                 <ul className="flex flex-col gap-16">
                     <MenuItems

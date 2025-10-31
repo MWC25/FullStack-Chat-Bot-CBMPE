@@ -51,9 +51,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </div>
                 </div>
             </header>
-            <div className="w-full h-fit flex">
+            <div className="w-full screen flex-1 flex">
                 <Sidebar />
-                <section className='bg-light m-32 shadow-md shadow-neutral-500 rounded-2xl w-full p-32'>{children}</section>
+                <section className="bg-light dark:bg-dark-secundary m-32 shadow-md dark:shadow-neutral-900 rounded-2xl w-full flex-1 overflow-y-auto pb-32 text-dark-secundary dark:text-light-secundary">
+                    {children}
+                </section>
             </div>
         </div>
     );

@@ -16,7 +16,7 @@ const Input = React.forwardRef<HTMLInputElement, PropsInput>(
                     className={`border-2 px-16 pt-16 pb-14 rounded w-480 outline-none bg-primary/15
                         border-dark-secundary
                         dark:border-light-secundary
-                        focus:border-primary hover:border-hover transition peer font-body`}
+                        focus:border-primary hover:border-hover transition peer font-body dark:text-light-secundary`}
                     placeholder={placeholder}
                     {...rest}
                 />
