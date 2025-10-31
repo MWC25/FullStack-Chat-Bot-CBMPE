@@ -22,10 +22,11 @@ export default function Button({
         outline === false && 'border-0',
         full && 'w-full'
     );
+
     return (
         <button
             onClick={onClick}
-            className={`${style} font-body-2 bold text-white py-8 px-16 rounded-lg`}>
+            className={`${style} font-body text-white py-8 px-16 rounded-lg`}>
             {children}
         </button>
     );
