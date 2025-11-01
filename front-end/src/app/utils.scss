@@ -2,7 +2,7 @@
 
 // Altere os valores abaixo conforme a necessidade
 // tamanho da fonte a unidade padrão é px
-$size-base-desktop: 14;
+$size-base-desktop: 16;
 
 // razão da fonte em relação ao tamanho base
 $text-ratio-desktop: 1.25;
@@ -72,7 +72,7 @@ h6 {
 }
 
 .tooltip {
-    font-size: 10px;
+    font-size: $size-base-desktop - 4 + px;
 }
 
 // tamanho da tela subitraindo o header
