@@ -20,7 +20,7 @@ export default function NavSettings({links = []}: { links:  Links[]}) {
                     className={`px-16 py-8   font-body rounded-lg ${
                         route === link.href
                             ? 'bg-primary text-light'
-                            : 'bg-light-secundary text-dark/90 dark:bg-dark dark:text-light/90'
+                            : 'bg-light-secundary text-dark/90 dark:bg-dark dark:text-light/90 hover:bg-hover hover:text-light'
                     }`}
                     key={link.id}
                     href={link.href}>
