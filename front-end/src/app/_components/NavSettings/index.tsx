@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-
 
 export interface Links {
     id: number,
@@ -14,10 +12,6 @@ export interface Links {
 export default function NavSettings({links = []}: { links:  Links[]}) {
 
     const route = usePathname()
-
-    useEffect(()=>{
-        console.log(route)
-    })
 
     return (
         <nav className="flex gap-16">

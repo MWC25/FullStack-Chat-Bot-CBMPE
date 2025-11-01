@@ -16,7 +16,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         chats: 'Chats',
         settings: 'Configuração',
         more: "Mais",
-        profile: "Perfil"
+        profile: "Perfil",
+        notification: "Notificação"
     }
 
     const translatedRoute = routesTranslate[ lastSegment as keyof typeof routesTranslate] ?? lastSegment;
