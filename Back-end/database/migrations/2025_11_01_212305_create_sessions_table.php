@@ -10,14 +10,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('session', function (Blueprint $table) {
             $table->id();
-            $table->timestamps("created_at");
-            $table->timestamps("expires_at");
-            $table->timestamps("last_activity_at");
+            $table->timestamp("created_at");
+            $table->timestamp("expires_at");
+            $table->timestamp("last_activity_at");
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->tinyint('revoked');
-            $table->tinyint('revoked_at')->default(0);
+            $table->boolean('revoked')->default(false);
+
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('session');
     }
 };

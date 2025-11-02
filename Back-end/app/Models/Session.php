@@ -9,7 +9,7 @@ class Session extends Model
 {
     /** @use HasFactory<\Database\Factories\SessionFactory> */
     use HasFactory;
-    protected $table = 'sessions';
+    protected $table = 'session';
     protected $fillable = [
         'created_at',
         'expires_at',
