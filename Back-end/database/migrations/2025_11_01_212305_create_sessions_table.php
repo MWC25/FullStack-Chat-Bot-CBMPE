@@ -12,12 +12,11 @@ return new class extends Migration
     {
         Schema::create('session', function (Blueprint $table) {
             $table->id();
-            $table->timestamp("created_at");
-            $table->timestamp("expires_at");
+            $table->timestamp('expires_at')->nullable();
             $table->timestamp("last_activity_at");
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('revoked')->default(false);
-
+            $table->timestamps();
         });
     }
 

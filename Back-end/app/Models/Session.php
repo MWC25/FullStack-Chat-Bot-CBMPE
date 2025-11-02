@@ -11,12 +11,10 @@ class Session extends Model
     use HasFactory;
     protected $table = 'session';
     protected $fillable = [
-        'created_at',
         'expires_at',
         'last_activity_at',
         'user_id',
         'revoked',
-        'revoked_at',
     ];
 
 }
