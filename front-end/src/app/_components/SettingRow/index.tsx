@@ -14,7 +14,7 @@ export default function SettingRow({
     buttonAction,
 }: SettingRowProps) {
     return (
-        <div className="flex flex-col gap-16 justify-center h-fit border-b-2 w-300 py-32">
+        <div className="flex flex-col gap-16 justify-center h-fit border-b-2 w-300 pt-8 pb-32 mb-8">
             <h4 className="title-4">{sectionName}</h4>
             <p className="font-body">{sectionData}</p>
             {buttonAction ? (

@@ -26,7 +26,7 @@ export default function Button({
     return (
         <button
             onClick={onClick}
-            className={`${style} font-body text-white py-8 px-16 rounded-lg`}>
+            className={`${style} inline-flex gap-16 font-body justify-center text-white py-8 px-16 rounded-lg cursor-pointer`}>
             {children}
         </button>
     );

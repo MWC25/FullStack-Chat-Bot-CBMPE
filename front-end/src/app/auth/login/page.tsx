@@ -9,8 +9,6 @@ import { FormDataLogin, loginSchema } from '../../_schemas/FormLoginSchema';
 import { loginUser } from '@/app/_services/LoginUser';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useTheme } from '@/app/_context/ThemeContext';
-import { Moon, Sun } from 'lucide-react';
 import ThemeButton from '@/app/_components/ThemeButton';
 
 export default function Login() {
@@ -25,7 +23,6 @@ export default function Login() {
             }
         }
     );
-    const {theme, toggleTheme} = useTheme()
 
     const form = useForm({
         resolver: zodResolver(loginSchema),
