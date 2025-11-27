@@ -401,6 +401,176 @@
                 }
             }
         },
+        "/api/ServiceRequest/get": {
+            "get": {
+                "tags": [
+                    "Service Requests"
+                ],
+                "summary": "Lista todas as solicitações de serviço",
+                "description": "Listar todas as solicitações.",
+                "operationId": "4b66af51530c72fc8a7dc2a40021e27e",
+                "responses": {
+                    "200": {
+                        "description": "Lista de solicitações retornada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ServiceRequest"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ServiceRequest/create": {
+            "post": {
+                "tags": [
+                    "Service Requests"
+                ],
+                "summary": "Cria uma nova solicitação de serviço",
+                "description": "Criar uma nova solicitação.",
+                "operationId": "3958069ece07cec7cd3b8e13a3966e0b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "pushName",
+                                    "numero",
+                                    "status",
+                                    "topic"
+                                ],
+                                "properties": {
+                                    "pushName": {
+                                        "type": "string",
+                                        "example": "João Silva"
+                                    },
+                                    "numero": {
+                                        "type": "string",
+                                        "example": "5581999999999"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "waiting",
+                                            "in service"
+                                        ],
+                                        "example": "waiting"
+                                    },
+                                    "topic": {
+                                        "type": "string",
+                                        "example": "Dúvida sobre atendimento"
+                                    },
+                                    "conversationSummary": {
+                                        "type": "string",
+                                        "example": "Resumo inicial da conversa.",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Solicitação criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceRequest"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Erro de validação"
+                    }
+                }
+            }
+        },
+        "/api/ServiceRequest/updateStatus{serviceRequest}": {
+            "patch": {
+                "tags": [
+                    "Service Requests"
+                ],
+                "summary": "Atualiza o status de uma solicitação de serviço",
+                "description": "Atualizar apenas o status de uma solicitação.",
+                "operationId": "7950cce4765824cac8011b459f15088e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da solicitação",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "waiting",
+                                            "in service"
+                                        ],
+                                        "example": "in service"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Status atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceRequest"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Solicitação não encontrada"
+                    },
+                    "422": {
+                        "description": "Erro de validação"
+                    }
+                }
+            }
+        },
+        "/api/session": {
+            "get": {
+                "tags": [
+                    "Sessions"
+                ],
+                "summary": "List Sessions",
+                "operationId": "8118d447e6ca0f1b372524e7bf131bdb",
+                "responses": {
+                    "200": {
+                        "description": "Paged list of Sessions"
+                    }
+                }
+            }
+        },
         "/api/user/getusers": {
             "get": {
                 "tags": [
@@ -669,7 +839,64 @@
             }
         }
     },
+    "components": {
+        "schemas": {
+            "ServiceRequest": {
+                "required": [
+                    "pushName",
+                    "numero",
+                    "status",
+                    "topic"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": true,
+                        "example": 1
+                    },
+                    "pushName": {
+                        "type": "string",
+                        "example": "João Silva"
+                    },
+                    "numero": {
+                        "type": "string",
+                        "example": "5581999999999"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "waiting",
+                            "in service"
+                        ],
+                        "example": "waiting"
+                    },
+                    "topic": {
+                        "type": "string",
+                        "example": "Dúvida sobre atendimento"
+                    },
+                    "conversationSummary": {
+                        "type": "string",
+                        "example": "Cliente perguntou sobre tempo de espera.",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
     "tags": [
+        {
+            "name": "Service Requests",
+            "description": "Gerenciamento das solicitações de atendimento"
+        },
         {
             "name": "Authentication",
             "description": "Authentication"
@@ -677,6 +904,10 @@
         {
             "name": "Business",
             "description": "Business"
+        },
+        {
+            "name": "Sessions",
+            "description": "Sessions"
         },
         {
             "name": "Usuários",
