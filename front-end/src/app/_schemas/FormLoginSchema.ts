@@ -1,12 +1,12 @@
 import { z } from 'zod'
 
 export const loginSchema = z.object({
-    name: z
+    registration: z
         .string()
-        .min(5, 'O nome deve ter pelo menos 5 caracteres')
+        .min(8, 'O nome deve ter pelo menos 8 números')
         .regex(
-            /^[a-z]+$/,
-            'O nome deve conter apenas letras minúsculas, sem espaços'
+            /^[0-9]+$/,
+            'A matricula deve conter apenas números'
         ),
     password: z
         .string()

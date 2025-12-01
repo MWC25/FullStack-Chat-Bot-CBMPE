@@ -29,8 +29,8 @@ export default function Login() {
     });
 
     async function onSubmit(formData: FormDataLogin) {
-        console.log(formData.name, formData.password);
-        const login = await loginUser(formData.name, formData.password)
+        console.log(formData.registration, formData.password);
+        const login = await loginUser(formData.registration, formData.password)
         
         if (!login.ok) { setResData(login.data) }
         
@@ -57,11 +57,11 @@ export default function Login() {
                 className="flex flex-col gap-16 items-center justify-center w-320"
                 action="">
                 <Input
-                    label="Nome"
+                    label="Matricula"
                     type="text"
-                    {...form.register('name')}
+                    {...form.register('registration')}
                     error={
-                        form.formState.errors.name?.message as
+                        form.formState.errors.registration?.message as
                             | string
                             | undefined
                     }
@@ -81,7 +81,7 @@ export default function Login() {
                         {resData.response.message}
                     </p>
                 ) : (
-                    <p className="title-4 text-transparent">placeholder</p>
+                    <p className="title-4 invisible"></p>
                 )}
                 <Button className="bg-primary hover:bg-hover" full>
                     Acessar

@@ -5,9 +5,8 @@ import { ConversationData } from '@/app/_components/CardMessage/types';
 import PageHeader from '@/app/_components/PageHeader';
 import { NotificationContext } from '@/app/_context/NotificationContext';
 import data from '@/app/_data/messages.json';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
-const messages: ConversationData[] = data.data as ConversationData[];
 
 export default function Chats({ children }: { children?: React.ReactNode }) {
 

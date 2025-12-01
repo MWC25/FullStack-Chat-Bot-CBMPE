@@ -1,8 +1,8 @@
-import axios from 'axios';
+
 import api, { setAuthToken } from '../../../lib/axiosClient';
 
 export async function loginUser(
-    username: string,
+    registration: string,
     password: string,
     expireInMin: number = 1
 ) {
@@ -11,8 +11,8 @@ export async function loginUser(
         instant.getTime() + expireInMin * 60 * 1000
     ).toISOString();
     try {
-        const res = await api.post('/auth/login', {
-            username,
+        const res = await api.post('/api/login', {
+            registration,
             password,
             expireInMin,
         });
