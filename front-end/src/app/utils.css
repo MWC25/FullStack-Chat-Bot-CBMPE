@@ -1,0 +1,63 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-roboto);
+}
+
+.bold {
+  font-weight: 800 !important;
+}
+
+.title-1 {
+  overflow-wrap: normal;
+  font-size: 49px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.title-2 {
+  font-size: 39px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.title-3 {
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.title-4 {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.font-body,
+.font-body-2,
+.tooltip {
+  font-family: var(--font-roboto);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.font-body {
+  font-size: 16px;
+}
+
+.font-body-2 {
+  font-size: 14px;
+}
+
+.tooltip {
+  font-size: 12px;
+}
+
+.screen {
+  height: calc(100dvh - 108px);
+}
+
+/*# sourceMappingURL=utils.css.map */
