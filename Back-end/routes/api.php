@@ -6,6 +6,7 @@ use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ServiceRequestController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
@@ -30,4 +31,9 @@ Route::prefix("user")->group(function () {
 Route::prefix("session")->group(function () {
     Route::get('/getsession', [SessionController::class, 'getSessions']);
     Route::post('/createsession', [SessionController::class, 'createSession']);
+});
+Route::prefix("ServiceRequest")->group(function () {
+    Route::get('/get', [ServiceRequestController::class, 'index']);
+    Route::post('/create', [ServiceRequestController::class, 'store']);
+    Route::patch('/updateStatus/{serviceRequest}', [ServiceRequestController::class, 'updateStatus']);
 });
