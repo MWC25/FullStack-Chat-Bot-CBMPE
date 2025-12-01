@@ -1,14 +1,24 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Sidebar from '../_components/Sidebar';
 import Link from 'next/link';
 import { CircleUserRound } from 'lucide-react';
 import ThemeButton from '../_components/ThemeButton';
 import Image from 'next/image';
 import PopUpNotification from '../_components/PopUpNotification';
+import { useEffect } from 'react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!localStorage.getItem('accessToken')) {
+            router.push('/login');
+        }
+    }, []);
+
     const pathname = usePathname();
 
     const lastSegment = pathname.split('/').filter(Boolean).pop();
@@ -39,7 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             {translatedRoute}
                         </h2>
                         <div className="flex items-center gap-16">
-                            <Link
+                            {/* <Link
                                 className={`${
                                     pathname === '/dashboard/settings/profile'
                                         ? 'text-primary'
@@ -48,7 +58,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 href={'/dashboard/settings/profile'}>
                                 <CircleUserRound size={28} />
                                 Perfil
-                            </Link>
+                            </Link> */}
                             <ThemeButton />
                         </div>
                     </div>

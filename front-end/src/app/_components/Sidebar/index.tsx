@@ -11,21 +11,21 @@ export default function Sidebar() {
                         leftIcon={<MessageSquareText size={20} />}
                         label="Chats"
                     />
-                    <MenuItems
+                    {/* <MenuItems
                         path="/dashboard/more"
                         leftIcon={<Ellipsis size={20} />}
                         label="More"
-                    />
+                    /> */}
                 </ul>
             </nav>
-            <nav>
+            {/* <nav>
                 <ul>
                     <MenuItems
                         path="/dashboard/settings/profile"
                         rightIcon={<Settings size={32} />}
                     />
                 </ul>
-            </nav>
+            </nav> */}
         </div>
     );
 }

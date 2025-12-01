@@ -7,6 +7,7 @@ type ButtonProps = {
     className?: string;
     full?: boolean;
     onClick?: MouseEventHandler
+    disabled?: boolean;
 };
 
 export default function Button({
@@ -15,6 +16,7 @@ export default function Button({
     className,
     full,
     onClick,
+    disabled
 }: ButtonProps) {
     const style = clsx(
         className,
@@ -25,8 +27,9 @@ export default function Button({
 
     return (
         <button
+            disabled={disabled}
             onClick={onClick}
-            className={`${style} inline-flex gap-16 font-body justify-center text-white py-8 px-16 rounded-lg cursor-pointer`}>
+            className={`${style} inline-flex gap-16 font-body justify-center text-white py-8 px-16 rounded-lg cursor-pointer disabled:*:cursor-not-allowed disabled:opacity-50`}>
             {children}
         </button>
     );
