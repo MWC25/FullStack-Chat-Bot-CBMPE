@@ -13,31 +13,33 @@ import ThemeButton from '@/app/_components/ThemeButton';
 
 export default function Login() {
     const router = useRouter()
-    const [resData, setResData] = useState(
-        {
-            errorStatusCode: null,
-            errorCode: null,
-            errorMessage: null,
-            response: {
-                message: null
-            }
-        }
-    );
+    const [resData, setResData] = useState<null | {
+        errorStatusCode: number | null;
+        errorCode: string | null;
+        errorMessage: string | null;
+        response: { message: string | null };
+    }>(null);
+
+
 
     const form = useForm({
         resolver: zodResolver(loginSchema),
     });
 
     async function onSubmit(formData: FormDataLogin) {
-        console.log(formData.name, formData.password);
-        const login = await loginUser(formData.name, formData.password)
-        
-        if (!login.ok) { setResData(login.data) }
-        
-        if(login.ok){
-            router.push('/dashboard/chats')
+        console.log('FORM =>', formData.name, formData.password);
+
+        const login = await loginUser(formData.name, formData.password);
+
+        if (!login.ok) {
+            if (login.data) setResData(login.data);
+            return;
         }
+
+        setResData(null);
+        router.push('/dashboard/chats');
     }
+
 
     return (
         <div className="flex flex-col gap-32 justify-center items-center">
@@ -83,11 +85,12 @@ export default function Login() {
                 ) : (
                     <p className="title-4 text-transparent">placeholder</p>
                 )}
+
                 <Button className="bg-primary hover:bg-hover" full>
                     Acessar
                 </Button>
             </form>
-            <ThemeButton/>
+            <ThemeButton />
         </div>
     );
 }

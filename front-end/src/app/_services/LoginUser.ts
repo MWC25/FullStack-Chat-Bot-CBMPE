@@ -1,6 +1,20 @@
+'use client';
 import api, { setAuthToken } from '../../../lib/axiosClient';
 
-export async function loginUser(registration: string, password: string) {
+type LoginErrorData = {
+    errorStatusCode: number | null;
+    errorCode: string | null;
+    errorMessage: string | null;
+    response: {
+        message: string | null;
+    };
+};
+
+type LoginResult =
+    | { ok: true; data: any }
+    | { ok: false; data: LoginErrorData };
+
+export async function loginUser(registration: string, password: string): Promise<LoginResult> {
     try {
         const res = await api.post('/api/login', {
             registration,
@@ -8,27 +22,36 @@ export async function loginUser(registration: string, password: string) {
         });
 
         const data = res.data;
+        console.log('LOGIN RESPONSE =>', data);
 
-        if (data.accessToken) {
-            console.log(data);
-            localStorage.setItem('accessToken', data.accessToken);
-            localStorage.setItem('refreshToken', data.refreshToken);
-            setAuthToken(data.accessToken);
+        // ajusta o nome aqui se a API mandar `access_token`
+        const token = data.accessToken ?? data.access_token;
+
+        if (typeof window !== 'undefined' && token) {
+            localStorage.setItem('accessToken', token);
+
+            if (data.refreshToken ?? data.refresh_token) {
+                localStorage.setItem('refreshToken', data.refreshToken ?? data.refresh_token);
+            }
+
+            setAuthToken(token);
         }
 
-        return { ok: true, data };
+        return { ok: !!token, data };
     } catch (error: any) {
-        const data = {
-            errorStatusCode: error.status,
-            errorCode: error.code,
-            errorMessage: error.message,
+        console.error('LOGIN ERROR RAW =>', error);
+
+        const errorData: LoginErrorData = {
+            errorStatusCode: error?.response?.status ?? null,
+            errorCode: error?.code ?? null,
+            errorMessage: error?.message ?? null,
             response: {
-                message: error.response?.data.message,
+                message: error?.response?.data?.message ?? 'Erro ao realizar login',
             },
         };
 
-        console.log(data);
+        console.log('LOGIN ERROR PARSED =>', errorData);
 
-        return { ok: false };
+        return { ok: false, data: errorData };
     }
 }

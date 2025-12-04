@@ -14,10 +14,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
 
     useEffect(() => {
-        if (!localStorage.getItem('accessToken')) {
-            router.push('/login');
+        if (typeof window === 'undefined') return;
+
+        const token = localStorage.getItem('accessToken');
+        console.log('TOKEN NO LAYOUT =>', token);
+
+        if (!token) {
+            router.push('/auth/login');
         }
-    }, []);
+    }, [router]);
 
     const pathname = usePathname();
 
