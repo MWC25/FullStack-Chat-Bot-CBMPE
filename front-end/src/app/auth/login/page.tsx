@@ -30,6 +30,7 @@ export default function Login() {
         console.log('FORM =>', formData.name, formData.password);
 
         const login = await loginUser(formData.name, formData.password);
+        console.log('LOGIN RESULT =>', login);
 
         if (!login.ok) {
             if (login.data) setResData(login.data);
